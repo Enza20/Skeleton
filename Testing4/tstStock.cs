@@ -13,5 +13,18 @@ namespace Testing4
             clsStock Stock = new clsStock();
             Assert.IsNotNull(Stock);
         }
+
+        [TestMethod]
+
+        public void ActivePropertyOK()
+        {
+            clsStock Stock = new clsStock();
+
+            Boolean TestData = true;
+
+            Stock.Active = TestData;
+
+            Assert.AreEqual(Stock.Active, TestData);
+        }
     }
 }
