@@ -20,5 +20,9 @@ namespace ClassLibrary
 
         public bool CanPurchase { get; set; }
 
+        public string Valid(int id, string description, int quantity, int supplierid, string expirydate, double price)
+        {
+            return "";
+        }
     }
 }

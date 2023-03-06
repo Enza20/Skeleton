@@ -6,7 +6,17 @@ namespace Testing4
 {
     [TestClass]
     public class tstStock
+
     {
+
+        int id = 1;
+        string description = "Random description";
+        int quantity = 1;
+        int supplierid = 1;
+        string expirydate = DateTime.Now.Date.ToString();
+        double price = 2.1;
+
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -102,6 +112,17 @@ namespace Testing4
             Stock.CanPurchase = TestData;
 
             Assert.AreEqual(Stock.CanPurchase, TestData);
+        }
+
+        public void ValidMethodOK()
+        {
+            clsStock Stock = new clsStock();
+
+            String Error = "";
+
+            Error = Stock.Valid(id, description, quantity, supplierid, expirydate, price);
+
+            Assert.AreEqual(Error, "");
         }
     }
 }
