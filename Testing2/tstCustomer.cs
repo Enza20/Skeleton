@@ -7,7 +7,8 @@ namespace Testing2
     [TestClass]
     public class tstCustomer
     {
-  
+        //private data member for the customer no property
+        private Int32 mCustomerId;
         [TestMethod]
         public void InstanceOK()
         {
@@ -101,6 +102,29 @@ namespace Testing2
             Customer.CustomerBillingAddress = TestData;
             //test to see that the two values are the same
             Assert.AreEqual(Customer.CustomerBillingAddress, TestData);
+        }
+
+        public void FindMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //boolean variable to store the results of the validation
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 CustomerId = 200503;
+            //invoke the method
+            Found = ACustomer.Find(CustomerId);
+            //test to see if the result is true
+            Assert.IsTrue(Found);
+            //check customer number
+            if (ACustomer.CustomerId != 200503)
+            {
+               OK = false;
+            }
+
+            Assert.IsTrue(OK);
         }
     }
 }
