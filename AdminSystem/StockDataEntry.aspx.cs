@@ -16,7 +16,15 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsStock Stock = new clsStock();
+        
         Stock.ProductID = int.Parse(txtStockID.Text);
+        Stock.Description = txtDescription.Text;
+        Stock.Quantity = int.Parse(txtQuantity.Text);
+        Stock.ExpiryDate = DateTime.Parse(txtExpiryDate.Text);
+        Stock.SupplierID = int.Parse(txtSupplierID.Text);
+        Stock.ProductPrice = double.Parse(txtProductPrice.Text);
+        Stock.ProductID = int.Parse(txtStockID.Text);
+
         Session["Stock"] = Stock;
         Response.Redirect("StockViewer.aspx");
     }
