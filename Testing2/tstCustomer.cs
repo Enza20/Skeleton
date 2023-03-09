@@ -126,6 +126,28 @@ namespace Testing2
 
             Assert.IsTrue(OK);
         }
+
+        public void TestDateAddedFound()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //boolean variable to store the results of the validation
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 CustomerId = 200503;
+            //invoke the method
+            Found = ACustomer.Find(CustomerId);
+            //check the property
+            if (ACustomer.DateOfRegistration != Convert.ToDateTime("16/09/2015"))
+            {
+                OK = false;
+            }
+            //test to see if the result is true
+            Assert.IsTrue(OK);
+        }
+
     }
 }
 
