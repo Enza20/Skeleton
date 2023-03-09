@@ -9,6 +9,20 @@ namespace ClassLibrary
 
         //addressNo private memebr variable
         private Int32 mCustomerId;
+
+        public DateTime mDateOfRegistration
+        {
+            get
+            {
+                return mDateOfRegistration;
+            }
+
+            set
+            {
+                mDateOfRegistration = value;
+            }
+        }
+
         public int CustomerId
         {
             get
@@ -34,6 +48,7 @@ namespace ClassLibrary
 
             //set the private data members to the test data value
             mCustomerId = 200503;
+            mDateOfRegistration = Convert.ToDateTime("16/9/2015");
             //always return true
             return true;
         }
