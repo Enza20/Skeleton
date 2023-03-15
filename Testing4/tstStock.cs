@@ -114,6 +114,113 @@ namespace Testing4
             Assert.AreEqual(Stock.CanPurchase, TestData);
         }
 
+        public void FindMethodOK()
+        {
+            clsStock Stock = new clsStock();
+            Boolean Found = false;
+            Int32 ProductID = 1;
+            Found = Stock.Find(ProductID);
+            Assert.IsTrue(Found);
+        }
+
+        public void TestProductIDFound()
+        {
+            clsStock Stock = new clsStock();
+            Boolean Found = false;
+            Boolean ok = true;
+            Int32 ProductID = 1;
+            Found = Stock.Find(ProductID);
+            if(Stock.ProductID != 1)
+            {
+                ok = false;
+            }
+            Assert.IsTrue(ok);
+        }
+
+        public void TestDescriptionFound()
+        {
+            clsStock Stock = new clsStock();
+            Boolean Found = false;
+            Boolean ok = true;
+            Int32 ProductID = 1;
+            Found = Stock.Find(ProductID);
+            if(Stock.Description != "Test Description")
+            {
+                ok = false;
+            }
+            Assert.IsTrue(ok);
+        }
+
+        public void TestQuantityFound()
+        {
+            clsStock Stock = new clsStock();
+            Boolean Found = false;
+            Boolean ok = true;
+            Int32 ProductID = 1;
+            Found = Stock.Find(ProductID);
+            if (Stock.Quantity != 1)
+            {
+                ok = false;
+            }
+            Assert.IsTrue(ok);
+        }
+
+        public void TestSupplierIDFound()
+        {
+            clsStock Stock = new clsStock();
+            Boolean Found = false;
+            Boolean ok = true;
+            Int32 ProductID = 1;
+            Found = Stock.Find(ProductID);
+            if (Stock.SupplierID != 1)
+            {
+                ok = false;
+            }
+            Assert.IsTrue(ok);
+        }
+
+        public void TestExpiryDateFound()
+        {
+            clsStock Stock = new clsStock();
+            Boolean Found = false;
+            Boolean ok = true;
+            Int32 ProductID = 1;
+            Found = Stock.Find(ProductID);
+            if (Stock.ExpiryDate != Convert.ToDateTime("16/09/2025"))
+            {
+                ok = false;
+            }
+            Assert.IsTrue(ok);
+        }
+
+        public void TestProductPriceFound()
+        {
+            clsStock Stock = new clsStock();
+            Boolean Found = false;
+            Boolean ok = true;
+            Int32 ProductID = 1;
+            Found = Stock.Find(ProductID);
+            if (Stock.ProductPrice != 5.0)
+            {
+                ok = false;
+            }
+            Assert.IsTrue(ok);
+        }
+
+        public void TestCanPurchaseFound()
+        {
+            clsStock Stock = new clsStock();
+            Boolean Found = false;
+            Boolean ok = true;
+            Int32 ProductID = 1;
+            Found = Stock.Find(ProductID);
+            if (Stock.CanPurchase != true)
+            {
+                ok = false;
+            }
+            Assert.IsTrue(ok);
+        }
+
         public void ValidMethodOK()
         {
             clsStock Stock = new clsStock();

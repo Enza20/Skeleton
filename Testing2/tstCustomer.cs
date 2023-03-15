@@ -129,11 +129,11 @@ namespace Testing2
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerId = 200503;
+            Int32 CustomerId = 1;
             //invoke the method
             Found = ACustomer.Find(CustomerId);
             //check customer number
-            if (ACustomer.CustomerId != 200503)
+            if (ACustomer.CustomerId != 1)
             {
                OK = false;
             }
@@ -176,7 +176,7 @@ namespace Testing2
             //invoke the method
             Found = ACustomer.Find(CustomerId);
             //check the property
-            if (ACustomer.CustomerPhoneNumber != "07951287384")
+            if (ACustomer.CustomerPhoneNumber != "01858100100")
             {
                 OK = false;
             }
