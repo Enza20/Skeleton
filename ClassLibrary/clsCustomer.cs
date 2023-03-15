@@ -1,28 +1,51 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
 
 namespace ClassLibrary
 {
     public class clsCustomer
-    { 
-        public bool IsAllowed { get; set; }
-        public DateTime DateOfRegistration { get; set; }
+    {
+        //private data member for isAllowed
+        private Boolean mIsAllowed;
 
-        //addressNo private memebr variable
-        private Int32 mCustomerId;
-
-        public DateTime mDateOfRegistration
+        //public property for IsAllowed
+        public bool IsAllowed 
         {
             get
             {
+                //return the private data
+                return mIsAllowed;
+            }
+            set {
+                //set the private data
+                mIsAllowed = value;
+            }
+        }
+
+        //private date added data member
+        private DateTime mDateOfRegistration;
+        //public property for date added
+        public DateTime DateOfRegistration
+        {
+            get
+            {
+                //return the private data
                 return mDateOfRegistration;
             }
-
             set
             {
+                //set the private data
                 mDateOfRegistration = value;
             }
         }
 
+        //CustomerNo private member variable
+        private Int32 mCustomerId;
+
+        //public property for the customer number
         public int CustomerId
         {
             get
@@ -38,9 +61,53 @@ namespace ClassLibrary
             }
         
         }
-        public string CustomerFullName { get; set; }
-        public string CustomerPhoneNumber { get; set; }
-        public string CustomerBillingAddress { get; set; }
+
+        //CustomerFullName private member variable
+        private string mCustomerFullName;
+        public string CustomerFullName
+        {
+            get
+            {
+                //return the private data
+                return mCustomerFullName;
+            }
+            set
+            {
+                //set the private data
+                mCustomerFullName = value;
+            }
+        }
+
+        //CustomerNo private member variable
+        private string mCustomerPhoneNumber;
+        public string CustomerPhoneNumber
+        {
+            get
+            {
+                //return the private data
+                return mCustomerPhoneNumber;
+            }
+            set
+            {
+                //set the private data
+                mCustomerPhoneNumber = value;
+            }
+        }
+        //CustomerBillingAddress private member variable
+        private string mCustomerBillingAddress;
+        public string CustomerBillingAddress
+        {
+            get
+            {
+                //return the private data
+                return mCustomerBillingAddress;
+            }
+            set
+            {
+                //set the private data
+                mCustomerBillingAddress = value;
+            }
+        }
 
         public bool Find(int customerNo)
         {
@@ -49,8 +116,13 @@ namespace ClassLibrary
             //set the private data members to the test data value
             mCustomerId = 200503;
             mDateOfRegistration = Convert.ToDateTime("16/9/2015");
+            mIsAllowed = true;
+            mCustomerPhoneNumber = "07951243849";
+            mCustomerBillingAddress = "1 DMU Close";
+            mCustomerFullName = "Jane Doe";
             //always return true
             return true;
+  
         }
     }
 }
