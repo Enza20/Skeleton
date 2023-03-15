@@ -109,20 +109,37 @@ namespace ClassLibrary
             }
         }
 
-        public bool Find(int customerNo)
+        public bool Find(int CustomerId)
         {
-            // throw new NotImplementedException();
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the customer no to search for
+            DB.AddParameter("@CustomerId", CustomerId);
+            //execute the stored procedure
+            DB.Execute("sproc_tblCustomer_FilterByCustomerId");
+            //if one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                //set the private data members to the test data value
+                mCustomerId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerId"]);
+                mDateOfRegistration = Convert.ToDateTime(DB.DataTable.Rows[0]["DateOfRegistration"]);
+                mIsAllowed = Convert.ToBoolean(DB.DataTable.Rows[0]["IsAllowed"]);
+                mCustomerPhoneNumber = Convert.ToString(DB.DataTable.Rows[0]["CustomerPhoneNumber"]);
+                mCustomerBillingAddress = Convert.ToString(DB.DataTable.Rows[0]["CustomerBillingAddress"]);
+                mCustomerFullName = Convert.ToString(DB.DataTable.Rows[0]["CustomerFullName"]);
+                //return that everything worked OK
+                return true;
+            }
+            //if no record was found
+            else
+            {
+                //return false indicating a problem
+                return false;
+            }
+           
+        
 
-            //set the private data members to the test data value
-            mCustomerId = 200503;
-            mDateOfRegistration = Convert.ToDateTime("16/9/2015");
-            mIsAllowed = true;
-            mCustomerPhoneNumber = "07951243849";
-            mCustomerBillingAddress = "1 DMU Close";
-            mCustomerFullName = "Jane Doe";
-            //always return true
-            return true;
-  
+      // throw new NotImplementedException();
         }
     }
 }

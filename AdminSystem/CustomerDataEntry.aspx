@@ -7,8 +7,8 @@
     <title></title>
 </head>
 <body>
-    This is the customer entry page
     <form id="form1" runat="server">
+    This is the customer entry page
         <asp:Label ID="lblCustomerId" runat="server" Text="Customer Number"></asp:Label>
         <asp:TextBox ID="txtCustomerId" runat="server" ></asp:TextBox>
         <br />
@@ -19,6 +19,7 @@
         </div>
         <asp:Label ID="lblCustomerPhoneNumber" runat="server" Text="Phone Number" width="230px"></asp:Label>
         <asp:TextBox ID="txtCustomerPhoneNumber" runat="server"></asp:TextBox>
+        <asp:Button ID="btnFind" runat="server" OnClick="Button1_Click1" style="margin-top: 26px" Text="Find" />
         <p>
             <asp:Label ID="lblCustomerBillingAddress" runat="server" Text="Billing Address" width="230px"></asp:Label>
             <asp:TextBox ID="txtCustomerBillingAddress" runat="server" ></asp:TextBox>
