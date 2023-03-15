@@ -17,7 +17,7 @@ public partial class _1Viewer : System.Web.UI.Page
         //display the full name for this entry
         Response.Write(Staff.FullName);
         Response.Write(Staff.Role);
-        Response.Write(Staff.Date);
+        Response.Write(Staff.EmploymentDate);
         Response.Write(Staff.Salary);
         Response.Write(Staff.StaffId);
 

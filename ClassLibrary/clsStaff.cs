@@ -7,7 +7,7 @@ namespace ClassLibrary
         //private data member for the staff id
         private Int32 mStaffId;
 
-        private DateTime mDate;
+        private DateTime mEmploymentDate;
         private string mFullName;
         private string mRole;
         private Boolean mActive;
@@ -29,15 +29,15 @@ namespace ClassLibrary
         }
 
         //employment date public property
-        public DateTime Date
+        public DateTime EmploymentDate
         {
             get
             {
-                return mDate;
+                return mEmploymentDate;
             }
             set
             {
-                mDate = value;
+                mEmploymentDate = value;
             }
         }
 
@@ -120,7 +120,7 @@ namespace ClassLibrary
         //}
 
 
-        public bool Find(int staffId)
+        public bool Find(int StaffId)
         {
             //create an instance of the data connection
             clsDataConnection DB = new clsDataConnection();
@@ -134,7 +134,7 @@ namespace ClassLibrary
                 mFullName= Convert.ToString(DB.DataTable.Rows[0]["FullName"]);
                 mRole= Convert.ToString(DB.DataTable.Rows[0]["Role"]);
                 mActive= Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
-               // mEmploymentDate= Convert.ToDateTime(DB.DataTable.Rows[0]["EmploymentDate"]);
+               mEmploymentDate= Convert.ToDateTime(DB.DataTable.Rows[0]["EmploymentDate"]);
                mSalary= Convert.ToDecimal(DB.DataTable.Rows[0]["Salary"]);
 
                 //return that everything worked OK

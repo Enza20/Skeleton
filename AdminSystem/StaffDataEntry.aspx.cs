@@ -24,10 +24,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsStaff Staff = new clsStaff();
        Staff.StaffId = int.Parse(txtStaffId.Text);
         //capture the full name
-        Staff.FullName = TextBox1.Text;
+        Staff.FullName = txtFullName.Text;
         // Staff.Role = lblRole.Text;
-        Staff.Date = DateTime.Parse(TextBox4.Text);
-        Staff.Salary =decimal.Parse(TextBox5.Text);
+        Staff.EmploymentDate = DateTime.Parse(txtEmploymentDate.Text);
+        Staff.Salary =decimal.Parse(txtSalary.Text);
         //Store the full name in the session object
         Session["Staff"] = Staff;
 
@@ -57,8 +57,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //display the values of the properties
             txtStaffId.Text = Staff.StaffId.ToString();
             txtFullName.Text = Staff.FullName;
-
-
+            txtRole.Text = Staff.Role;
+            txtEmploymentDate.Text = Staff.EmploymentDate.ToString();
+            txtSalary.Text = Staff.Salary.ToString();
+            ChkActive.Checked = Staff.Active;
         }
     }
 }

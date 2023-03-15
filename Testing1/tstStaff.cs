@@ -47,9 +47,9 @@ namespace Testing1
             //create some test data to assign to the property
             DateTime TestData = DateTime.Now.Date;
             //assign the data to the property
-            Staff.Date = TestData;
+            Staff.EmploymentDate = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(Staff.Date, TestData);
+            Assert.AreEqual(Staff.EmploymentDate, TestData);
         }
 
         [TestMethod]
@@ -117,7 +117,7 @@ namespace Testing1
             //boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 StaffId = 1;
+            Int32 StaffId = 7;
             //invoke the method
             Found = Staff.Find(StaffId);
             //test to see if the result is true
@@ -138,11 +138,11 @@ namespace Testing1
             //bool var to record if data is OK 
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 1;
+            Int32 StaffId = 7;
             //invoke the method
             Found = Staff.Find(StaffId);
             //check the staff id
-            if(Staff.StaffId !=1)
+            if(Staff.StaffId !=7)
             {
                 OK = false;
 
@@ -165,7 +165,7 @@ namespace Testing1
             //boolean variable to record if data is OK (Assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffID = 1;
+            Int32 StaffID = 14;
             //invoke the method
             Found = Staff.Find(StaffID);
 
@@ -191,11 +191,11 @@ namespace Testing1
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 StaffId = 1;
+            Int32 StaffId = 7;
             //invoke the method
             Found = Staff.Find(StaffId);
             //check the property
-            if(Staff.Date != Convert.ToDateTime("17/01/2017"))
+            if(Staff.EmploymentDate != Convert.ToDateTime("12/11/2020"))
             {
                 OK = false;
             }
@@ -216,7 +216,7 @@ namespace Testing1
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 StaffId = 1;
+            Int32 StaffId = 8;
             //invoke the method
             Found = Staff.Find(StaffId);
             //check the property
@@ -232,7 +232,24 @@ namespace Testing1
         [TestMethod]
         public void TestSalaryFound()
         {
+            //create an instance of the class
+            clsStaff Staff = new clsStaff();
+            //bool variable to store the result of the search
+            Boolean Found = false;
+            //bool var to record if data is ok (assume it is)
+            Boolean OK = true;
 
+            //create some test data to use with the method
+            Int32 StaffId = 8;
+            //invoke the method
+            Found = Staff.Find(StaffId);
+            //check the property
+            if (Staff.Salary != 60)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
 
         }
 
@@ -252,7 +269,7 @@ namespace Testing1
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 StaffId = 1;
+            Int32 StaffId = 7;
             //invoke the method
             Found = Staff.Find(StaffId);
             //check the property
