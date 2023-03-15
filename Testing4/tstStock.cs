@@ -9,7 +9,6 @@ namespace Testing4
 
     {
 
-        int id = 1;
         string description = "Random description";
         int quantity = 1;
         int supplierid = 1;
@@ -228,11 +227,444 @@ namespace Testing4
 
             String Error = "";
 
-            Error = Stock.Valid(id, description, quantity, supplierid, expirydate, price);
+            Error = Stock.Valid(description, quantity, supplierid, expirydate, price);
 
             Assert.AreEqual(Error, "");
         }
 
-       
+        [TestMethod]
+        public void DescriptionMid()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            string Description = "";
+            Description = Description.PadRight(250, 'a');
+            Error = Stock.Valid(Description, quantity, supplierid, expirydate, price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+       public void DescriptionMaxLessOne()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            string Description = "";
+            Description = Description.PadRight(499, 'a');
+            Error = Stock.Valid(Description, quantity, supplierid, expirydate, price);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void DescriptionMax()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            string Description = "";
+            Description = Description.PadRight(500, 'a');
+            Error = Stock.Valid(Description, quantity, supplierid, expirydate, price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DescriptionMaxPlusOne()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            string Description = "";
+            Description = Description.PadRight(501, 'a');
+            Error = Stock.Valid(Description, quantity, supplierid, expirydate, price);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DescriptionExtremeMax()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            string Description = "";
+            Description = Description.PadRight(1000, 'a');
+            Error = Stock.Valid(Description, quantity, supplierid, expirydate, price);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityMinLessOne()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            Int32 Quantity = -1;
+            Error = Stock.Valid(description, Quantity, supplierid, expirydate, price);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityMin()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            Int32 Quantity = 0;
+            Error = Stock.Valid(description, Quantity, supplierid, expirydate, price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityMinPlusOne()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            Int32 Quantity = 1;
+            Error = Stock.Valid(description, Quantity, supplierid, expirydate, price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityMid()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            Int32 Quantity = 5000;
+            Error = Stock.Valid(description, Quantity, supplierid, expirydate, price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityMaxLessOne()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            Int32 Quantity = 9999;
+            Error = Stock.Valid(description, Quantity, supplierid, expirydate, price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityMax()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            Int32 Quantity = 10000;
+            Error = Stock.Valid(description, Quantity, supplierid, expirydate, price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityMaxPlusOne()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            Int32 Quantity = 10001;
+            Error = Stock.Valid(description, Quantity, supplierid, expirydate, price);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityExtremeMax()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            Int32 Quantity = 999999;
+            Error = Stock.Valid(description, Quantity, supplierid, expirydate, price);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierIDMinLessOne()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            Int32 SupplierID = 0;
+            Error = Stock.Valid(description, quantity, SupplierID, expirydate, price);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierIDMin()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            Int32 SupplierID = 1;
+            Error = Stock.Valid(description, quantity, SupplierID, expirydate, price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierIDMinPlusOne()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            Int32 SupplierID = 2;
+            Error = Stock.Valid(description, quantity, SupplierID, expirydate, price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierIDMid()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            Int32 SupplierID = 500;
+            Error = Stock.Valid(description, quantity, SupplierID, expirydate, price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierIDMaxLessOne()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            Int32 SupplierID = 999;
+            Error = Stock.Valid(description, quantity, SupplierID, expirydate, price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierIDMax()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            Int32 SupplierID = 1000;
+            Error = Stock.Valid(description, quantity, SupplierID, expirydate, price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierIDMaxPlusOne()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            Int32 SupplierID = 1001;
+            Error = Stock.Valid(description, quantity, SupplierID, expirydate, price);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SupplierIDExtremeMax()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            Int32 SupplierID = 100000;
+            Error = Stock.Valid(description, quantity, SupplierID, expirydate, price);
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void ExpiryDateExtremeMin()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(-100);
+            string ExpiryDate = TestDate.ToString();
+            Error = Stock.Valid(description, quantity, supplierid, ExpiryDate, price);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ExpiryDateMinLessOne()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(-1);
+            string ExpiryDate = TestDate.ToString();
+            Error = Stock.Valid(description, quantity, supplierid, ExpiryDate, price);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ExpiryDateMin()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string ExpiryDate = TestDate.ToString();
+            Error = Stock.Valid(description, quantity, supplierid, ExpiryDate, price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ExpiryDateMinPlusOne()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(1);
+            string ExpiryDate = TestDate.ToString();
+            Error = Stock.Valid(description, quantity, supplierid, ExpiryDate, price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ExpiryDateMid()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(10);
+            string ExpiryDate = TestDate.ToString();
+            Error = Stock.Valid(description, quantity, supplierid, ExpiryDate, price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ExpiryDateMaxLessOne()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(20);
+            TestDate = TestDate.AddDays(-1);
+            string ExpiryDate = TestDate.ToString();
+            Error = Stock.Valid(description, quantity, supplierid, ExpiryDate, price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ExpiryDateMax()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(20);
+            string ExpiryDate = TestDate.ToString();
+            Error = Stock.Valid(description, quantity, supplierid, ExpiryDate, price);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ExpiryDateMaxPlusOne()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(20);
+            TestDate = TestDate.AddDays(1);
+            string ExpiryDate = TestDate.ToString();
+            Error = Stock.Valid(description, quantity, supplierid, ExpiryDate, price);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ExpiryDateExtremeMax()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(200);
+            string ExpiryDate = TestDate.ToString();
+            Error = Stock.Valid(description, quantity, supplierid, ExpiryDate, price);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ExpiryDateInvalidData()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            string ExpiryDate = "Not a date";
+            Error = Stock.Valid(description, quantity, supplierid, ExpiryDate, price);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductPriceExtremeMin()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            double ProductPrice = -10.0;
+            Error = Stock.Valid(description, quantity, supplierid, expirydate, ProductPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductPriceMinLessOne()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            double ProductPrice = 0.00;
+            Error = Stock.Valid(description, quantity, supplierid, expirydate, ProductPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductPriceMin()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            double ProductPrice = 0.01;
+            Error = Stock.Valid(description, quantity, supplierid, expirydate, ProductPrice);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductPriceMinPlusOne()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            double ProductPrice = 0.02;
+            Error = Stock.Valid(description, quantity, supplierid, expirydate, ProductPrice);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductPriceMid()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            double ProductPrice = 5000.00;
+            Error = Stock.Valid(description, quantity, supplierid, expirydate, ProductPrice);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductPriceMaxLessOne()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            double ProductPrice = 9999.98;
+            Error = Stock.Valid(description, quantity, supplierid, expirydate, ProductPrice);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductPriceMax()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            double ProductPrice = 9999.99;
+            Error = Stock.Valid(description, quantity, supplierid, expirydate, ProductPrice);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductPriceMaxPlusOne()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            double ProductPrice = 10000.00;
+            Error = Stock.Valid(description, quantity, supplierid, expirydate, ProductPrice);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductPriceExtremeMax()
+        {
+            clsStock Stock = new clsStock();
+            String Error = "";
+            double ProductPrice = 1000000.00;
+            Error = Stock.Valid(description, quantity, supplierid, expirydate, ProductPrice);
+            Assert.AreNotEqual(Error, "");
+        }
     }
 }
