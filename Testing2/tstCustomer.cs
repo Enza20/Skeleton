@@ -37,7 +37,7 @@ namespace Testing2
         }
 
         [TestMethod]
-        public void RegistrationDatePropertyOK()
+        public void DateOfRegistrationPropertyOK()
         {
             //create an instance of the class we want to create
             clsCustomer Customer = new clsCustomer();
@@ -64,7 +64,7 @@ namespace Testing2
 
 
         [TestMethod]
-        public void FullNamePropertyOK()
+        public void CustomerFullNamePropertyOK()
         {
             //create an instance of the class we want to create
             clsCustomer Customer = new clsCustomer();
@@ -78,7 +78,7 @@ namespace Testing2
 
 
         [TestMethod]
-        public void PhoneNumberPropertyOK()
+        public void CustomerPhoneNumberPropertyOK()
         {
             //create an instance of the class we want to create
             clsCustomer Customer = new clsCustomer();
@@ -92,7 +92,7 @@ namespace Testing2
 
 
         [TestMethod]
-        public void BillingAddressPropertyOK()
+        public void CustomerBillingAddressPropertyOK()
         {
             //create an instance of the class we want to create
             clsCustomer Customer = new clsCustomer();
@@ -103,8 +103,24 @@ namespace Testing2
             //test to see that the two values are the same
             Assert.AreEqual(Customer.CustomerBillingAddress, TestData);
         }
-
+        [TestMethod]
         public void FindMethodOK()
+        {
+        
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create some test data to use with the method
+            Int32 CustomerId = 200503;
+            //invoke the method
+            Found = ACustomer.Find(CustomerId);
+            //test to see if the result is correct
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestCustomerIdFound()
         {
             //create an instance of the class we want to create
             clsCustomer ACustomer = new clsCustomer();
@@ -116,18 +132,107 @@ namespace Testing2
             Int32 CustomerId = 200503;
             //invoke the method
             Found = ACustomer.Find(CustomerId);
-            //test to see if the result is true
-            Assert.IsTrue(Found);
             //check customer number
             if (ACustomer.CustomerId != 200503)
             {
                OK = false;
             }
-
+            //test to see if the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestCustomerFullNameFound()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //boolean variable to store the results of the validation
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 CustomerId = 200503;
+            //invoke the method
+            Found = ACustomer.Find(CustomerId);
+            //check the property
+            if (ACustomer.CustomerFullName != "Jane Doe")
+            {
+                OK = false;
+            }
+            //test to see if the result is correct
             Assert.IsTrue(OK);
         }
 
-        public void TestDateAddedFound()
+        [TestMethod]
+        public void TestCustomerPhoneNumberFound()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //boolean variable to store the results of the validation
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 CustomerId = 200503;
+            //invoke the method
+            Found = ACustomer.Find(CustomerId);
+            //check the property
+            if (ACustomer.CustomerPhoneNumber != "07951287384")
+            {
+                OK = false;
+            }
+            //test to see if the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestCustomerBillingAddressFound()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //boolean variable to store the results of the validation
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 CustomerId = 200503;
+            //invoke the method
+            Found = ACustomer.Find(CustomerId);
+            //check the property
+            if (ACustomer.CustomerBillingAddress != "1 DMU Close")
+            {
+                OK = false;
+            }
+            //test to see if the result is correct
+            Assert.IsTrue(OK);
+        }
+
+
+
+        [TestMethod]
+        public void TestIsAllowedFound()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //boolean variable to store the results of the validation
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 CustomerId = 200503;
+            //invoke the method
+            Found = ACustomer.Find(CustomerId);
+            //check the property
+            if (ACustomer.IsAllowed != true)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+
+        [TestMethod]
+        public void TestDateOfRegistrationFound()
         {
             //create an instance of the class we want to create
             clsCustomer ACustomer = new clsCustomer();
