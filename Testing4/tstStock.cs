@@ -37,6 +37,7 @@ namespace Testing4
             Assert.AreEqual(Stock.Active, TestData);
         }
 
+        [TestMethod]
         public void ProductIDOK()
         {
             clsStock Stock = new clsStock();
@@ -47,7 +48,7 @@ namespace Testing4
 
             Assert.AreEqual(Stock.ProductID, TestData);
         }
-
+        [TestMethod]
         public void DescriptionOK()
         {
             clsStock Stock = new clsStock();
@@ -58,7 +59,7 @@ namespace Testing4
 
             Assert.AreEqual(Stock.Description, TestData);
         }
-
+        [TestMethod]
         public void QuantityOK()
         {
             clsStock Stock = new clsStock();
@@ -69,7 +70,7 @@ namespace Testing4
 
             Assert.AreEqual(Stock.Quantity, TestData);
         }
-
+        [TestMethod]
         public void SupplierIDOK()
         {
             clsStock Stock = new clsStock();
@@ -80,7 +81,7 @@ namespace Testing4
 
             Assert.AreEqual(Stock.SupplierID, TestData);
         }
-
+        [TestMethod]
         public void ExpiryDateOK()
         {
             clsStock Stock = new clsStock();
@@ -91,7 +92,7 @@ namespace Testing4
 
             Assert.AreEqual(Stock.ExpiryDate, TestData);
         }
-
+        [TestMethod]
         public void ProductPriceOK()
         {
             clsStock Stock = new clsStock();
@@ -102,7 +103,7 @@ namespace Testing4
 
             Assert.AreEqual(Stock.ProductPrice, TestData);
         }
-
+        [TestMethod]
         public void CanPurchaseOK()
         {
             clsStock Stock = new clsStock();
@@ -113,7 +114,7 @@ namespace Testing4
 
             Assert.AreEqual(Stock.CanPurchase, TestData);
         }
-
+        [TestMethod]
         public void FindMethodOK()
         {
             clsStock Stock = new clsStock();
@@ -122,7 +123,7 @@ namespace Testing4
             Found = Stock.Find(ProductID);
             Assert.IsTrue(Found);
         }
-
+        [TestMethod]
         public void TestProductIDFound()
         {
             clsStock Stock = new clsStock();
@@ -136,7 +137,7 @@ namespace Testing4
             }
             Assert.IsTrue(ok);
         }
-
+        [TestMethod]
         public void TestDescriptionFound()
         {
             clsStock Stock = new clsStock();
@@ -144,13 +145,13 @@ namespace Testing4
             Boolean ok = true;
             Int32 ProductID = 1;
             Found = Stock.Find(ProductID);
-            if(Stock.Description != "Test Description")
+            if(Stock.Description != "Test")
             {
                 ok = false;
             }
             Assert.IsTrue(ok);
         }
-
+        [TestMethod]
         public void TestQuantityFound()
         {
             clsStock Stock = new clsStock();
@@ -158,13 +159,13 @@ namespace Testing4
             Boolean ok = true;
             Int32 ProductID = 1;
             Found = Stock.Find(ProductID);
-            if (Stock.Quantity != 1)
+            if (Stock.Quantity != 5)
             {
                 ok = false;
             }
             Assert.IsTrue(ok);
         }
-
+        [TestMethod]
         public void TestSupplierIDFound()
         {
             clsStock Stock = new clsStock();
@@ -178,7 +179,7 @@ namespace Testing4
             }
             Assert.IsTrue(ok);
         }
-
+        [TestMethod]
         public void TestExpiryDateFound()
         {
             clsStock Stock = new clsStock();
@@ -186,13 +187,13 @@ namespace Testing4
             Boolean ok = true;
             Int32 ProductID = 1;
             Found = Stock.Find(ProductID);
-            if (Stock.ExpiryDate != Convert.ToDateTime("16/09/2025"))
+            if (Stock.ExpiryDate != Convert.ToDateTime("21/05/2028"))
             {
                 ok = false;
             }
             Assert.IsTrue(ok);
         }
-
+        [TestMethod]
         public void TestProductPriceFound()
         {
             clsStock Stock = new clsStock();
@@ -200,13 +201,13 @@ namespace Testing4
             Boolean ok = true;
             Int32 ProductID = 1;
             Found = Stock.Find(ProductID);
-            if (Stock.ProductPrice != 5.0)
+            if (Stock.ProductPrice != 3.0)
             {
                 ok = false;
             }
             Assert.IsTrue(ok);
         }
-
+        [TestMethod]
         public void TestCanPurchaseFound()
         {
             clsStock Stock = new clsStock();
@@ -220,7 +221,7 @@ namespace Testing4
             }
             Assert.IsTrue(ok);
         }
-
+        [TestMethod]
         public void ValidMethodOK()
         {
             clsStock Stock = new clsStock();
@@ -231,5 +232,7 @@ namespace Testing4
 
             Assert.AreEqual(Error, "");
         }
+
+       
     }
 }

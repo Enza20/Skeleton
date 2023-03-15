@@ -99,7 +99,7 @@ namespace ClassLibrary
             }
         }
 
-        public bool Find(int productID)
+        public bool Find(int ProductID)
         {
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@ProductID", ProductID);

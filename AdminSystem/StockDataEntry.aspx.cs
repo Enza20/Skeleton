@@ -29,7 +29,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Response.Redirect("StockViewer.aspx");
     }
 
-    protected void Button1_Click(object sender, EventArgs e)
+    protected void btnFind_Click(object sender, EventArgs e)
     {
         clsStock Stock = new clsStock();
         Int32 ProductID;
