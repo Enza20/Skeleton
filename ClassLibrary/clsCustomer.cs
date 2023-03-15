@@ -8,43 +8,9 @@ namespace ClassLibrary
 {
     public class clsCustomer
     {
-        //private data member for isAllowed
-        private Boolean mIsAllowed;
-
-        //public property for IsAllowed
-        public bool IsAllowed 
-        {
-            get
-            {
-                //return the private data
-                return mIsAllowed;
-            }
-            set {
-                //set the private data
-                mIsAllowed = value;
-            }
-        }
-
-        //private date added data member
-        private DateTime mDateOfRegistration;
-        //public property for date added
-        public DateTime DateOfRegistration
-        {
-            get
-            {
-                //return the private data
-                return mDateOfRegistration;
-            }
-            set
-            {
-                //set the private data
-                mDateOfRegistration = value;
-            }
-        }
-
-        //CustomerNo private member variable
+       //CustomerNo private member variable
         private Int32 mCustomerId;
-
+      
         //public property for the customer number
         public int CustomerId
         {
@@ -60,8 +26,8 @@ namespace ClassLibrary
                 mCustomerId = value;
             }
         
-        }
-
+        }     
+        
         //CustomerFullName private member variable
         private string mCustomerFullName;
         public string CustomerFullName
@@ -93,6 +59,7 @@ namespace ClassLibrary
                 mCustomerPhoneNumber = value;
             }
         }
+
         //CustomerBillingAddress private member variable
         private string mCustomerBillingAddress;
         public string CustomerBillingAddress
@@ -108,6 +75,41 @@ namespace ClassLibrary
                 mCustomerBillingAddress = value;
             }
         }
+
+        //private date added data member
+        private DateTime mDateOfRegistration;
+        //public property for date added
+        public DateTime DateOfRegistration
+        {
+            get
+            {
+                //return the private data
+                return mDateOfRegistration;
+            }
+            set
+            {
+                //set the private data
+                mDateOfRegistration = value;
+            }
+        }
+
+        //private data member for isAllowed
+        private Boolean mIsAllowed;
+
+        //public property for IsAllowed
+        public bool IsAllowed 
+        {
+            get
+            {
+                //return the private data
+                return mIsAllowed;
+            }
+            set {
+                //set the private data
+                mIsAllowed = value;
+            }
+        }
+
 
         public bool Find(int CustomerId)
         {
@@ -136,10 +138,13 @@ namespace ClassLibrary
                 //return false indicating a problem
                 return false;
             }
-           
-        
 
-      // throw new NotImplementedException();
+
+          //  public string isAllowed(int CustoemrId, string CustomerFullName, string CustomerPhoneNumber, string CustomerBillingAddress )
+          //  {
+          //      return "";
+         //   }
+           //  throw new NotImplementedException();
         }
     }
 }
