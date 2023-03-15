@@ -122,9 +122,88 @@ namespace ClassLibrary
 
         }
 
-        public string Valid(int id, string description, int quantity, int supplierid, string expirydate, double price)
+        public string Valid(string description, int quantity, int supplierid, string expirydate, double price)
         {
-            return "";
+            String Error = "";
+            DateTime DateTemp;
+            if(description.Length > 500)
+            {
+                Error = Error + "The maximum lenght of description is 500 characters. ";
+            }
+
+            try
+            {
+                if (quantity < 0)
+                {
+                    Error = Error + "Quantity cannot be negative number. ";
+                }
+
+                if (quantity > 10000)
+                {
+                    Error = Error + "Quantity cannot be greater than 10000. ";
+                }
+            }
+            catch
+            {
+                Error = Error + "Invalid quantity format. ";
+            }
+
+            try
+            {
+                if (supplierid < 1)
+                {
+                    Error = Error + "SupplierID cannot be less than 1. ";
+                }
+
+                if (supplierid > 1000)
+                {
+                    Error = Error + "Maximum number of SupplierID is 1000. ";
+                }
+            }
+            catch
+            {
+                Error = Error + "Invalid SupplierID format. ";
+            }
+
+            try
+            {
+                DateTemp = Convert.ToDateTime(expirydate);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past. ";
+                }
+
+                DateTime MaxExpiryDate;
+                MaxExpiryDate = DateTime.Now.Date;
+                MaxExpiryDate = MaxExpiryDate.AddYears(20);
+                if (DateTemp > MaxExpiryDate)
+                {
+                    Error = Error + "Maximum date is 20 years in the future from today. ";
+                }
+            }
+            catch
+            {
+                Error = Error + "Invalid date format. ";
+            }
+
+            try
+            {
+                if (price < 0.01)
+                {
+                    Error = Error + "Price can not be 0 or less. ";
+                }
+                if (price > 9999.99)
+                {
+                    Error = Error + "Maximum price is 9999.99";
+                }
+            }
+            catch
+            {
+                Error = Error + "Invalid price format. ";
+            }
+
+
+            return Error;
         }
     }
 }
