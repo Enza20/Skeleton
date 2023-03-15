@@ -104,23 +104,53 @@ namespace ClassLibrary
         }
        
 
+        //public bool Find(int staffId)
+        //{
+        //    //set the private data members to the test data value
+        //    mStaffId = 1;
+        //    mDate = Convert.ToDateTime("17/01/2017");
+        //    mFullName = "Trevor Potts";
+        //    mRole = "Manager";
+        //    mActive = true;
+        //    //mSalary = 27.55;
+
+
+        //    //always return true
+        //    return true;
+        //}
+
+
         public bool Find(int staffId)
         {
-            //set the private data members to the test data value
-            mStaffId = 1;
-            mDate = Convert.ToDateTime("17/01/2017");
-            mFullName = "Trevor Potts";
-            mRole = "Manager";
-            mActive = true;
-            //mSalary = 27.55;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the staff id to serach for
+            DB.AddParameter("@StaffId", StaffId);
+            //execute the stored procedure
+            DB.Execute("sproc_tblStaff_FilterByStaffId");
+            if (DB.Count == 1)
+            {
+                mStaffId = Convert.ToInt32(DB.DataTable.Rows[0]["StaffId"]);
+                mFullName= Convert.ToString(DB.DataTable.Rows[0]["FullName"]);
+                mRole= Convert.ToString(DB.DataTable.Rows[0]["Role"]);
+                mActive= Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
+               // mEmploymentDate= Convert.ToDateTime(DB.DataTable.Rows[0]["EmploymentDate"]);
+               mSalary= Convert.ToDecimal(DB.DataTable.Rows[0]["Salary"]);
+
+                //return that everything worked OK
+                return true;
 
 
-            //always return true
-            return true;
+            }
+            //if no record was found
+            else
+            {
+                //return false indicating a problem
+                return false;
+
+            }
+
         }
-
-
-
 
 
 
