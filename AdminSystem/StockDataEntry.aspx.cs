@@ -28,4 +28,23 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Session["Stock"] = Stock;
         Response.Redirect("StockViewer.aspx");
     }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        clsStock Stock = new clsStock();
+        Int32 ProductID;
+        Boolean Found = false;
+        ProductID = Convert.ToInt32(txtStockID.Text);
+        Found = Stock.Find(ProductID);
+        if(Found == true)
+        {
+            txtStockID.Text = Stock.ProductID.ToString();
+            txtDescription.Text = Stock.Description;
+            txtQuantity.Text = Stock.Quantity.ToString();
+            txtSupplierID.Text = Stock.SupplierID.ToString();
+            txtExpiryDate.Text = Stock.ExpiryDate.ToString();
+            txtProductPrice.Text = Stock.ProductPrice.ToString();
+            chkCanPurchase.Checked = Stock.CanPurchase;
+        }
+    }
 }
