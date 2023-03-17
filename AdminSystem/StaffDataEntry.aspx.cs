@@ -15,25 +15,45 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOk_Click(object sender, EventArgs e)
     {
-        /*  we are creating an instance of the class Staff and storing some
-         *  of the data in the object for display on a second page.
-         */
-
+        
         //create a new instance of clsStaff
-
         clsStaff Staff = new clsStaff();
-       Staff.StaffId = int.Parse(txtStaffId.Text);
         //capture the full name
-        Staff.FullName = txtFullName.Text;
-        // Staff.Role = lblRole.Text;
-        Staff.EmploymentDate = DateTime.Parse(txtEmploymentDate.Text);
-        Staff.Salary =decimal.Parse(txtSalary.Text);
-        //Store the full name in the session object
-        Session["Staff"] = Staff;
+        string FullName = txtFullName.Text;
+        //capture the employment date
+        string EmploymentDate = txtEmploymentDate.Text;
+        //capture the role
+        string Role = txtRole.Text;
+        //capture the salary
+        string Salary = txtSalary.Text;
 
+        //variable to store any error messages
+        string Error = "";
+        //validate the data
+        Error = Staff.Valid( FullName, EmploymentDate, Role, Salary);
+        if (Error == "")
+        {
+            //capture the full name
+            Staff.FullName = FullName;
+            //capture the employment date
+            Staff.EmploymentDate = Convert.ToDateTime(EmploymentDate);
+            //capture the role
+            Staff.Role = Role;
+            //capture the salary
+            Staff.Salary = Convert.ToDecimal(Salary);
+        
+            //Store the details in the session object
+            Session["Staff"] = Staff;
 
-        //navigate to the viewer page
-        Response.Redirect("StaffViewer.aspx");
+            //redirect to the viewer page
+            Response.Write("StaffViewer.aspx");
+
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
 
     protected void txtStaffId_TextChanged(object sender, EventArgs e)
