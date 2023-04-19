@@ -180,7 +180,7 @@ namespace Testing2
             //invoke the method
             Found = ACustomer.Find(CustomerId);
             //check the property
-            if (ACustomer.CustomerPhoneNumber != "01858100100")
+            if (ACustomer.CustomerPhoneNumber != "01858910635")
             {
                 OK = false;
             }
@@ -202,7 +202,7 @@ namespace Testing2
             //invoke the method
             Found = ACustomer.Find(CustomerId);
             //check the property
-            if (ACustomer.CustomerBillingAddress != "1 DMU Close")
+            if (ACustomer.CustomerBillingAddress != "13 Chase Road")
             {
                 OK = false;
             }
@@ -249,7 +249,7 @@ namespace Testing2
             //invoke the method
             Found = ACustomer.Find(CustomerId);
             //check the property
-            if (ACustomer.DateOfRegistration != Convert.ToDateTime("16/09/2015"))
+            if (ACustomer.DateOfRegistration != Convert.ToDateTime("21/02/2023"))
             {
                 OK = false;
             }
