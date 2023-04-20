@@ -6,7 +6,14 @@ namespace Testing2
 {
     [TestClass]
     public class tstCustomer
-    {       
+    {
+
+        //Good test data
+        string CustomerFullName = "some name";
+        string CustomerPhoneNumber = "01858123456";
+        string CustomerBillingAddress = "1 dmu close";
+        string DateOfRegistration = DateTime.Now.Date.ToString();
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -17,8 +24,8 @@ namespace Testing2
             //test to see that it exists
             Assert.IsNotNull(Customer);
 
-        }    
-        
+        }
+
         [TestMethod]
         public void CustomerIdPropertyOK()
         {
@@ -96,11 +103,11 @@ namespace Testing2
             Customer.IsAllowed = TestData;
             //test to see if the two values are the same
             Assert.AreEqual(Customer.IsAllowed, TestData);
-           
+
 
             String Error = "";
 
-       //     Error = Customer.IsAllowed(customerId, description, quantity, supplierid, expirydate, price);
+            //     Error = Customer.IsAllowed(customerId, description, quantity, supplierid, expirydate, price);
 
             Assert.AreEqual(Error, "");
 
@@ -110,7 +117,7 @@ namespace Testing2
         [TestMethod]
         public void FindMethodOK()
         {
-        
+
             //create an instance of the class we want to create
             clsCustomer ACustomer = new clsCustomer();
             //boolean variable to store the results of the validation
@@ -139,7 +146,7 @@ namespace Testing2
             //check customer number
             if (ACustomer.CustomerId != 1)
             {
-               OK = false;
+                OK = false;
             }
             //test to see if the result is correct
             Assert.IsTrue(OK);
@@ -257,6 +264,230 @@ namespace Testing2
             Assert.IsTrue(OK);
         }
 
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //invoke the method
+            Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerBillingAddress, DateOfRegistration);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        //Customer full name validity
+        [TestMethod]
+        public void CustomerFullNameMinLessOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string CustomerFullName = ""; //this should trigger an error
+            //invoke the method
+            Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerBillingAddress, DateOfRegistration);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void CustomerFullNameMin()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string CustomerFullName = "a"; //this should be ok
+            //invoke the method
+            Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerBillingAddress, DateOfRegistration);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void CustomerFullNameMinPlusOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string CustomerFullName = "aa"; //this should be ok
+            //invoke the method
+            Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerBillingAddress, DateOfRegistration);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void CustomerFullNameMaxLessOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string CustomerFullName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
+            //invoke the method
+            Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerBillingAddress, DateOfRegistration);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void CustomerFullNameMax()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string CustomerFullName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
+            //invoke the method
+            Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerBillingAddress, DateOfRegistration);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void CustomerFullNameMid()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string CustomerFullName = "aaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
+            //invoke the method
+            Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerBillingAddress, DateOfRegistration);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void CustomerFullNameMaxPlusOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string CustomerFullName = ""; //this should fail
+            CustomerFullName = CustomerFullName.PadRight(51,'a'); //this should fail
+            //invoke the method
+            Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerBillingAddress, DateOfRegistration);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void CustomerFullNameExtremeMax()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            //create some test data to pass to the method
+            string CustomerFullName = ""; //this should fail
+            CustomerFullName = CustomerFullName.PadRight(500, 'a'); //this should fail
+            //invoke the method
+            Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerBillingAddress, DateOfRegistration);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        //Date of registration validity
+
+        [TestMethod]
+        public void DateofRegistrationExtremeMin()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+            //Change the date to whatever the date is less 100 years
+            TestDate = TestDate.AddYears(-100);
+            //convert the date variable to a string variable
+            string DateOfRegistration = TestDate.ToString();
+            Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerBillingAddress, DateOfRegistration);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateofRegistrationMinLessOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+            //Change the date to whatever the date is less 1 day
+            TestDate = TestDate.AddDays(-1);
+            //convert the date variable to a string variable
+            string DateOfRegistration = TestDate.ToString();
+            Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerBillingAddress, DateOfRegistration);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateofRegistrationMin()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+            
+            //convert the date variable to a string variable
+            string DateOfRegistration = TestDate.ToString();
+            Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerBillingAddress, DateOfRegistration);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateofRegistrationMinPlusOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+            //Change the date to whatever the date is plus 1 day
+            TestDate = TestDate.AddDays(1);
+            //convert the date variable to a string variable
+            string DateOfRegistration = TestDate.ToString();
+            Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerBillingAddress, DateOfRegistration);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateofRegistrationExtremeMax()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //Change the date to whatever the date is plus 100 years
+            TestDate = TestDate.AddYears(100);
+            //convert the date variable to a string variable
+            string DateOfRegistration = TestDate.ToString();
+            Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerBillingAddress, DateOfRegistration);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        //invalid data test:
+        [TestMethod]
+        public void DateOfRegistrationInvalidData()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            //string variable to store any error message
+            String Error = "";
+            //set the DateOfRegistration to a non date value
+            string DateOfRegistration = "This is not a date!";
+            //invoke the method
+            Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerBillingAddress, DateOfRegistration);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
     }
 }
 
