@@ -278,7 +278,7 @@ namespace Testing2
 
         }
 
-        //Customer full name validity
+        //CUSTOMER FULL NAME VALIDITY
         [TestMethod]
         public void CustomerFullNameMinLessOne()
         {
@@ -382,7 +382,10 @@ namespace Testing2
             Assert.AreNotEqual(Error, "");
         }
 
-        //Date of registration validity
+
+
+
+        //DATEOFREGISTRATION VALIDITY
 
         [TestMethod]
         public void DateofRegistrationExtremeMin()
@@ -487,6 +490,222 @@ namespace Testing2
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
 
+        }
+
+
+
+
+        //CustomerPhoneNumber VALIDATION
+
+         public void CustomerPhoneNumberMinLessOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string CustomerPhoneNumber = ""; //this should trigger an error
+            //invoke the method
+            Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerBillingAddress, DateOfRegistration);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void CustomerPhoneNumberMin()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string CustomerPhoneNumber = "0"; //this should be ok
+            //invoke the method
+            Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerBillingAddress, DateOfRegistration);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void CustomerPhoneNumberMinPlusOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string CustomerPhoneNumber = "01"; //this should be ok
+            //invoke the method
+            Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerBillingAddress, DateOfRegistration);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void CustomerPhoneNumberMaxLessOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string CustomerPhoneNumber = "01234567890123"; //this should be ok
+            //invoke the method
+            Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerBillingAddress, DateOfRegistration);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void CustomerPhoneNumberMax()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string CustomerPhoneNumber = "012345678901234"; //this should be ok
+            //invoke the method
+            Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerBillingAddress, DateOfRegistration);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void CustomerPhoneNumberMid()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string CustomerPhoneNumber = "0123456"; //this should be ok
+            //invoke the method
+            Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerBillingAddress, DateOfRegistration);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void CustomerPhoneNumberMaxPlusOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string CustomerPhoneNumber = "0123456789012345"; //this should fail
+            //invoke the method
+            Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerBillingAddress, DateOfRegistration);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void CustomerPhoneNumberExtremeMax()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            //create some test data to pass to the method
+            string CustomerPhoneNumber = ""; //this should fail
+            CustomerPhoneNumber = CustomerPhoneNumber.PadRight(500, '0'); //this should fail
+            //invoke the method
+            Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerBillingAddress, DateOfRegistration);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        } 
+        
+
+
+
+
+        //CustomerBillingAddress VALIDATION
+        [TestMethod]
+        public void CustomerBillingAddressMinLessOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string CustomerBillingAddress = ""; //this should trigger an error
+            //invoke the method
+            Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerBillingAddress, DateOfRegistration);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void CustomerBillingAddressMin()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string CustomerBillingAddress = "a"; //this should be ok
+            //invoke the method
+            Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerBillingAddress, DateOfRegistration);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void CustomerBillingAddressMinPlusOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string CustomerBillingAddress = "aa"; //this should be ok
+            //invoke the method
+            Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerBillingAddress, DateOfRegistration);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void CustomerBillingAddressMaxLessOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string CustomerBillingAddress = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //this should be ok
+            //invoke the method
+            Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerBillingAddress, DateOfRegistration);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void CustomerBillingAddressMax()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string CustomerBillingAddress = ""; 
+            CustomerBillingAddress = CustomerBillingAddress.PadRight(50, 'a'); //this should be ok
+            //invoke the method
+            Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerBillingAddress, DateOfRegistration);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void CustomerBillingAddressMid()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string CustomerBillingAddress = ""; 
+            CustomerBillingAddress = CustomerBillingAddress.PadRight(25, 'a'); //this should be ok
+            //invoke the method
+            Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerBillingAddress, DateOfRegistration);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void CustomerBillingAddressMaxPlusOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string CustomerBillingAddress = ""; //this should fail
+            CustomerBillingAddress = CustomerBillingAddress.PadRight(51, 'a'); //this should fail
+            //invoke the method
+            Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerBillingAddress, DateOfRegistration);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void CustomerBillingAddressExtremeMax()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            //create some test data to pass to the method
+            string CustomerBillingAddress = ""; //this should fail
+            CustomerBillingAddress = CustomerBillingAddress.PadRight(500, 'a'); //this should fail
+            //invoke the method
+            Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerBillingAddress, DateOfRegistration);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
         }
     }
 }

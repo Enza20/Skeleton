@@ -167,6 +167,7 @@ namespace ClassLibrary
                 //record the error
                 Error = Error + "The full name must be 50 characters or less : ";
             }
+
             try
             {
                 //copy the dateAdded value to the DateTemp variable
@@ -190,6 +191,38 @@ namespace ClassLibrary
                 //record the error
                 Error = Error + "The date was not a valid date : ";
             }
+
+            //if the customerPhoneNumber is blank:
+            if (customerPhoneNumber.Length == 0)
+            {
+                //record the error
+                Error = Error + "The phone number may not be blank: ";
+
+            }
+
+            //if the phone number is greater than 15 characters
+            if (customerPhoneNumber.Length > 15)
+            {
+                //record the error
+                Error = Error + "The phone number must be 15 characters or less : ";
+            }
+
+
+            //if the CustomerBillingAddress is blank:
+            if (customerBillingAddress.Length == 0)
+            {
+                //record the error
+                Error = Error + "The billing address may not be blank: ";
+
+            }
+
+            //if the CustomerBillingAddress is greater than 50 characters
+            if (customerBillingAddress.Length > 50)
+            {
+                //record the error
+                Error = Error + "The billing address must be 50 characters or less : ";
+            }
+
             //return any error messages
             return Error;
         }
