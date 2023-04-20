@@ -157,7 +157,7 @@ namespace ClassLibrary
             if (customerFullName.Length == 0)
             {
                 //record the error
-                Error = Error + "The full name may not be blank: ";
+                Error = Error + "The full name may not be blank :   ";
 
             }
 
@@ -165,38 +165,38 @@ namespace ClassLibrary
             if (customerFullName.Length > 50)
             {
                 //record the error
-                Error = Error + "The full name must be 50 characters or less : ";
+                Error = Error + "The full name must be 50 characters or less :      ";
             }
 
             try
             {
-                //copy the dateAdded value to the DateTemp variable
+                //copy the dateOfRegistration value to the DateTemp variable
                 DateTemp = Convert.ToDateTime(dateOfRegistration);
 
                 //check to see if the date is less than today's date
                 if (DateTemp < DateTime.Now.Date)
                 {
                     //record the error
-                    Error = Error + "The date cannot be in the past : ";
+                    Error = Error + "The date cannot be in the past :   ";
                 }
                 //check to see if the date is greater than today's date
                 if (DateTemp > DateTime.Now.Date)
                 {
                     //record the error
-                    Error = Error + "The data cannot be used in the future : ";
+                    Error = Error + "The data cannot be used in the future :    ";
                 }
             }
             catch
             {
                 //record the error
-                Error = Error + "The date was not a valid date : ";
+                Error = Error + "The date was not a valid date :    ";
             }
 
             //if the customerPhoneNumber is blank:
             if (customerPhoneNumber.Length == 0)
             {
                 //record the error
-                Error = Error + "The phone number may not be blank: ";
+                Error = Error + "The phone number may not be blank :    ";
 
             }
 
@@ -204,7 +204,7 @@ namespace ClassLibrary
             if (customerPhoneNumber.Length > 15)
             {
                 //record the error
-                Error = Error + "The phone number must be 15 characters or less : ";
+                Error = Error + "The phone number must be 15 characters or less :   ";
             }
 
 
@@ -212,7 +212,7 @@ namespace ClassLibrary
             if (customerBillingAddress.Length == 0)
             {
                 //record the error
-                Error = Error + "The billing address may not be blank: ";
+                Error = Error + "The billing address may not be blank :     ";
 
             }
 
@@ -220,7 +220,7 @@ namespace ClassLibrary
             if (customerBillingAddress.Length > 50)
             {
                 //record the error
-                Error = Error + "The billing address must be 50 characters or less : ";
+                Error = Error + "The billing address must be 50 characters or less :    ";
             }
 
             //return any error messages

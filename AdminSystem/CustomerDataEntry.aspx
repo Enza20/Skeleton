@@ -31,8 +31,8 @@
         <p>
             <asp:CheckBox ID="chkIsAllowed" runat="server" Text="Verified" />
         </p>
-        <asp:Button ID="btnOK" runat="server" OnClick="Button1_Click" Text="OK" />
-        <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
+        <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" />
+        <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" />
         <p>
         <asp:Label ID="lblError" runat="server" width="230px"></asp:Label>
         </p>
