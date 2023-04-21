@@ -103,7 +103,14 @@ namespace Test_Framework
             Assert.AreEqual(AllCustomers.Count, 2);
         }
     */
+/*[TestMethod]
+public void AddMethodOK()
+        {
+
+        }
+
 }
+*/
 
   
 }
