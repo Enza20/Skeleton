@@ -103,14 +103,34 @@ namespace Test_Framework
             Assert.AreEqual(AllCustomers.Count, 2);
         }
     */
-/*[TestMethod]
-public void AddMethodOK()
+        [TestMethod]
+        public void AddMethodOK()
         {
-
+            //create an instance of the class we want to create
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            clsCustomer TestItem = new clsCustomer();
+            //var to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.CustomerId = 7;
+            TestItem.CustomerFullName = "Joey Bloggssy";
+            TestItem.CustomerPhoneNumber = "078943742";
+            TestItem.CustomerBillingAddress = "39 chase road";
+            TestItem.DateOfRegistration = DateTime.Now.Date;
+            TestItem.IsAllowed = true;
+            AllCustomers.ThisCustomer = TestItem;
+            //add the record
+            PrimaryKey = AllCustomers.Add();
+            //set the PK of the test data
+            TestItem.CustomerId = PrimaryKey;
+            //find the record
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
         }
 
-}
-*/
+    }
+
 
   
 }
