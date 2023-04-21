@@ -227,7 +227,9 @@ namespace ClassLibrary
             return Error;
         }
 
-
-       
+        public static implicit operator List<object>(clsCustomer v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
