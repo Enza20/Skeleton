@@ -146,5 +146,90 @@ namespace ClassLibrary
          //   }
            //  throw new NotImplementedException();
         }
+
+        public string Valid(string customerFullName, string customerPhoneNumber, string customerBillingAddress, string dateOfRegistration)
+        {
+            //Create a string variable to store the error
+            String Error =  "";
+            //create a temporary variable to store date values
+            DateTime DateTemp;
+            //if the CustomerFullName is blank:
+            if (customerFullName.Length == 0)
+            {
+                //record the error
+                Error = Error + "The full name may not be blank :   ";
+
+            }
+
+            //if the full name is greater than 50 characters
+            if (customerFullName.Length > 50)
+            {
+                //record the error
+                Error = Error + "The full name must be 50 characters or less :      ";
+            }
+
+            try
+            {
+                //copy the dateOfRegistration value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(dateOfRegistration);
+
+                //check to see if the date is less than today's date
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past :   ";
+                }
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The data cannot be used in the future :    ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date :    ";
+            }
+
+            //if the customerPhoneNumber is blank:
+            if (customerPhoneNumber.Length == 0)
+            {
+                //record the error
+                Error = Error + "The phone number may not be blank :    ";
+
+            }
+
+            //if the phone number is greater than 15 characters
+            if (customerPhoneNumber.Length > 15)
+            {
+                //record the error
+                Error = Error + "The phone number must be 15 characters or less :   ";
+            }
+
+
+            //if the CustomerBillingAddress is blank:
+            if (customerBillingAddress.Length == 0)
+            {
+                //record the error
+                Error = Error + "The billing address may not be blank :     ";
+
+            }
+
+            //if the CustomerBillingAddress is greater than 50 characters
+            if (customerBillingAddress.Length > 50)
+            {
+                //record the error
+                Error = Error + "The billing address must be 50 characters or less :    ";
+            }
+
+            //return any error messages
+            return Error;
+        }
+
+        public static implicit operator List<object>(clsCustomer v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

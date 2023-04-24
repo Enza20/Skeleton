@@ -13,33 +13,43 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     }
 
-
-    protected void Button1_Click(object sender, EventArgs e)
+    //button OK
+    protected void btnOK_Click(object sender, EventArgs e)
     {
         //create a new instance of clsCustomer
         clsCustomer ACustomer = new clsCustomer();
-       //capture the full name
-        ACustomer.CustomerFullName = txtCustomerFullName.Text;
-
-
+        //capture the full name
+        string CustomerFullName = txtCustomerFullName.Text;
         //capture the phone number
-        ACustomer.CustomerPhoneNumber = txtCustomerPhoneNumber.Text;
-
-        //capture the phone number
-        ACustomer.CustomerBillingAddress = txtCustomerBillingAddress.Text;
-
+        string CustomerPhoneNumber = txtCustomerPhoneNumber.Text;
+        //capture the billing address
+        string CustomerBillingAddress = txtCustomerBillingAddress.Text;
         //capture the date of registration
-      //  ACustomer.DateOfRegistration = txtDateOfRegistration;
-
-        //capture the phone number
-    //    ACustomer.CustomerId = txtCustomerId.Text;
-
-
-        //store the customer in the session object
-        Session["ACustomer"] = ACustomer;
-
-        //Navigate to the viewer page
-        Response.Redirect("CustomerViewer.aspx");
+        string DateOfRegistration = txtDateOfRegistration.Text;
+        //variable to store any error messages
+        string Error = "";
+        //validate the data
+        Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerBillingAddress, DateOfRegistration);
+        if (Error == "")
+        {
+            //capture the full name
+            ACustomer.CustomerFullName = txtCustomerFullName.Text;
+            //capture the phone number
+            ACustomer.CustomerPhoneNumber = txtCustomerPhoneNumber.Text;
+            //capture the billing address
+            ACustomer.CustomerBillingAddress = txtCustomerBillingAddress.Text;
+            //capture the date of registration
+            ACustomer.DateOfRegistration = Convert.ToDateTime(txtDateOfRegistration.Text);
+            //store the customer in the session object
+            Session["ACustomer"] = ACustomer;
+            //Navigate to the viewer page
+            Response.Redirect("CustomerViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
 
 
@@ -68,5 +78,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
 
         }
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+
     }
 }
