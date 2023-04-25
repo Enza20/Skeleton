@@ -7,10 +7,15 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="lblError" runat="server">
         <div>
         </div>
-        <asp:ListBox ID="lstCustomerList" runat="server" ></asp:ListBox>
-    </form>
+        <asp:ListBox ID="lstCustomerList" runat="server" Height="680px" Width="715px" ></asp:ListBox>
+        <p>
+            <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" />
+            <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="Edit" />
+            <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" />
+        </p>
+        [lblError]</form>
 </body>
 </html>

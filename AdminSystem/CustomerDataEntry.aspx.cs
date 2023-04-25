@@ -8,8 +8,21 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //variable to store the primary key with page level scope
+    Int32 CustomerId;
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number of customers to be processed
+        CustomerId = Convert.ToInt32(Session["CustomerId"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if (CustomerId != -1)
+            {
+                //display the current data for the record
+                DisplayCustomers();
+            }
+        }
 
     }
 
@@ -32,6 +45,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = ACustomer.Valid(CustomerFullName, CustomerPhoneNumber, CustomerBillingAddress, DateOfRegistration);
         if (Error == "")
         {
+            //capture the customer id (PK)
+            ACustomer.CustomerId = CustomerId;
             //capture the full name
             ACustomer.CustomerFullName = txtCustomerFullName.Text;
             //capture the phone number
@@ -40,10 +55,39 @@ public partial class _1_DataEntry : System.Web.UI.Page
             ACustomer.CustomerBillingAddress = txtCustomerBillingAddress.Text;
             //capture the date of registration
             ACustomer.DateOfRegistration = Convert.ToDateTime(txtDateOfRegistration.Text);
-            //store the customer in the session object
-            Session["ACustomer"] = ACustomer;
-            //Navigate to the viewer page
-            Response.Redirect("CustomerViewer.aspx");
+            //capture isAllowed
+            ACustomer.IsAllowed = chkIsAllowed.Checked;
+
+            /*   // Old: store the customer in the session object
+               Session["ACustomer"] = ACustomer;
+               //Navigate to the viewer page
+               Response.Redirect("CustomerViewer.aspx");
+            */
+
+            //create a new instance of the customer collection
+            clsCustomerCollection CustomerList = new clsCustomerCollection();
+
+            //if this is a new record i.e. CustomerId = -1 then add the data
+            if (CustomerId == -1)
+            {
+                //set the ThisCustomer property
+                CustomerList.ThisCustomer = ACustomer;
+                //add the new record
+                CustomerList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                //find the record to update
+                CustomerList.ThisCustomer.Find(CustomerId);
+                //set the ThisCustomer property
+                CustomerList.ThisCustomer = ACustomer;
+                //update the record
+                CustomerList.Update();
+            }
+            
+            //redirect back to the listpage
+            Response.Redirect("CustomerLook.aspx");
         }
         else
         {
@@ -80,6 +124,20 @@ public partial class _1_DataEntry : System.Web.UI.Page
         }
     }
 
+    void DisplayCustomers()
+    {
+        //create an instance of the customer book
+        clsCustomerCollection CustomerBook = new clsCustomerCollection();
+        //find the record to update
+        CustomerBook.ThisCustomer.Find(CustomerId);
+        //display the data for this record
+        txtCustomerId.Text = CustomerBook.ThisCustomer.CustomerId.ToString();
+        txtCustomerFullName.Text = CustomerBook.ThisCustomer.CustomerFullName;
+        txtCustomerPhoneNumber.Text = CustomerBook.ThisCustomer.CustomerPhoneNumber;
+        txtCustomerBillingAddress.Text = CustomerBook.ThisCustomer.CustomerBillingAddress;
+        txtDateOfRegistration.Text = CustomerBook.ThisCustomer.DateOfRegistration.ToString();
+        chkIsAllowed.Checked = CustomerBook.ThisCustomer.IsAllowed;
+    }
     protected void btnCancel_Click(object sender, EventArgs e)
     {
 

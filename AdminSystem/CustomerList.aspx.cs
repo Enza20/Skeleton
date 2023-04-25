@@ -26,9 +26,59 @@ public partial class _1_List : System.Web.UI.Page
         //set the name of the primary key
         lstCustomerList.DataValueField = "CustomerId";
         //set the data field to display
-        lstCustomerList.DataTextField = "DateOfRegistration";
+        lstCustomerList.DataTextField = "CustomerFullName";
         //bind the data to the list
         lstCustomerList.DataBind();
 
+    }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        //store -1 into the session object to indicate this is a new record
+        Session["CustomerId"] = -1;
+        //redirect to the data entry page
+        Response.Redirect("CustomerDataEntry.aspx");
+
+    }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        //var to store the primary key value of the record to be edited
+        Int32 CustomerId;
+        //if a record has been slected from the list
+        if (lstCustomerList.SelectedIndex != -1) //allows us to make sure that the entry on the list has been clicked
+        {
+            //get the primary key value of the record to edit
+            CustomerId = Convert.ToInt32(lstCustomerList.SelectedValue);
+            //store the data in the session object
+            Session["CustomerId"] = CustomerId;
+            //redirect to the edit page
+            Response.Redirect("CustomerDataEntry.aspx");
+        }
+        else //if no record has been selected
+        {
+            lblError.InnerText = "Please select a record to edit from the list";
+        }
+    }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        //var to store the primary key value of the record to be deleted
+        Int32 CustomerId;
+        //if a record has been selected from the list
+        if (lstCustomerList.SelectedIndex != -1)
+        {
+            //GET THE pk VALUE OF THE RECORD TO DELETE
+            CustomerId = Convert.ToInt32(lstCustomerList.SelectedValue);
+            //store the data in the session object
+            Session["CustomerId"] = CustomerId;
+            //redirect to the delete page
+            Response.Redirect("CustomerConfirmDelete.aspx");
+        }
+        else //if no record has been selected
+        {
+            //display an error
+            lblError.InnerText = "Please select a record to delete from the list";
+        }
     }
 }
