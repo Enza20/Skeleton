@@ -123,6 +123,33 @@ namespace ClassLibrary
             return mThisCustomer.CustomerId;
           */
         }
+
+        public void Update()
+        {
+            //update an existing record based on the values of thisCustomer
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@CustomerId", mThisCustomer.CustomerId);
+            DB.AddParameter("@CustomerFullName", mThisCustomer.CustomerFullName);
+            DB.AddParameter("@CustomerPhoneNumber", mThisCustomer.CustomerPhoneNumber);
+            DB.AddParameter("@CustomerBillingAddress", mThisCustomer.CustomerBillingAddress);
+            DB.AddParameter("@DateOfRegistration", mThisCustomer.DateOfRegistration);
+            DB.AddParameter("@IsAllowed", mThisCustomer.IsAllowed);
+            //execute the stored [rpcedure
+            DB.Execute("sproc_tblCustomer_Update");
+        }
+
+        public void Delete()
+        {
+            //deletes the record pointed to by thisCustomer
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@CustomerId", mThisCustomer.CustomerId);
+            //execute the stored procedure
+            DB.Execute("sproc_tblCustomer_Delete");
+        }
     }
 
 }
