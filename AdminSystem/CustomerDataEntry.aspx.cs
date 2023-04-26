@@ -87,7 +87,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             }
             
             //redirect back to the listpage
-            Response.Redirect("CustomerLook.aspx");
+           // Response.Redirect("CustomerLook.aspx");
         }
         else
         {
@@ -140,6 +140,22 @@ public partial class _1_DataEntry : System.Web.UI.Page
     }
     protected void btnCancel_Click(object sender, EventArgs e)
     {
+        txtCustomerId.Text = "";
+        txtCustomerFullName.Text = "";
+        txtCustomerPhoneNumber.Text = "";
+        txtCustomerBillingAddress.Text = "";
+        txtDateOfRegistration.Text = "";
+        chkIsAllowed.Checked = false;
 
+    }
+
+    protected void btnList_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("CustomerList.aspx");
+    }
+
+    protected void btnList_Click1(object sender, EventArgs e)
+    {
+        Response.Redirect("CustomerList.aspx");
     }
 }

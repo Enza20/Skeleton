@@ -108,5 +108,6 @@ public partial class _1_List : System.Web.UI.Page
         lstCustomerList.DataTextField = "PostCode";
         //bind the data to the list
         lstCustomerList.DataBind();
+        
     }
 }
