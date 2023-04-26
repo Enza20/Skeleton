@@ -190,6 +190,28 @@ namespace Test_Framework
             Assert.IsFalse(Found);
            
         }
+        [TestMethod]
+        public void ReportByBillingAddressMethodOK()
+        {
+            //create an instance of the class containing unfiltered results
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            //create an instance of the filtered data
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            //apply a blank string (should return all records);
+            FilteredCustomers.ReportByBillingAddress("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllCustomers.Count, FilteredCustomers.Count);
+        }
+        [TestMethod]
+        public void ReportByBillingAddressNoneFound()
+        {
+            //create an instance of the class containing unfiltered results
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            //apply a post code that doesnt exist
+            FilteredCustomers.ReportByBillingAddress("xx xxxxxx xxxx");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredCustomers.Count);
+        }
 
     }
 
