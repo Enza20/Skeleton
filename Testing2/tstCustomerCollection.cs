@@ -212,6 +212,37 @@ namespace Test_Framework
             //test to see that there are no records
             Assert.AreEqual(0, FilteredCustomers.Count);
         }
+        
+        [TestMethod]
+        public void ReportByBillingAddressTestDataFound()
+        {
+            //create an instance of the filtered data
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            //var to store outcome
+            Boolean OK = true;
+            //apply an address that doesnt exist
+            FilteredCustomers.ReportByBillingAddress("Address doesnt exist");
+            //check that the correct number of records are found
+            if (FilteredCustomers.Count == 2)
+            {
+                //check that the first record is ID 36
+                if (FilteredCustomers.CustomerList[0].CustomerId != 6)
+                {
+                    OK = false;
+                }
+                //check that the first record is ID 37
+                if (FilteredCustomers.CustomerList[1].CustomerId != 37)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see tha there are no records
+            Assert.IsFalse(OK);
+        }
 
     }
 
