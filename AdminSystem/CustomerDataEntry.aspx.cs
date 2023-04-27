@@ -85,19 +85,21 @@ public partial class _1_DataEntry : System.Web.UI.Page
                 //update the record
                 CustomerList.Update();
             }
-            
+
             //redirect back to the listpage
-           // Response.Redirect("CustomerLook.aspx");
+            Response.Redirect("CustomerList.aspx");
         }
         else
         {
             //display the error message
             lblError.Text = Error;
+           
+         
         }
     }
 
 
-
+    //BtnFind:
     protected void Button1_Click1(object sender, EventArgs e)
     {
         //create an instance of the class we want to create

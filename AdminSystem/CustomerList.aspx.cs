@@ -107,7 +107,8 @@ public partial class _1_List : System.Web.UI.Page
         //set the name of the field to display
         lstCustomerList.DataTextField = "PostCode";
         //bind the data to the list
-        lstCustomerList.DataBind();
-        
+        //lstCustomerList.DataBind();
+        Response.Redirect("CustomerList.aspx");
+
     }
 }

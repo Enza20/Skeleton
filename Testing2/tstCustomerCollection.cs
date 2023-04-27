@@ -9,7 +9,7 @@ namespace Test_Framework
     public class tstCustomerCollection
     {
 
-    /*    [TestMethod]
+        [TestMethod]
         public void InstanceOK()
         {
             //create an instance of the class we want to create
@@ -17,7 +17,7 @@ namespace Test_Framework
             //test to see that it exists
             Assert.IsNotNull(AllCustomers);
         }
-    */
+    
         [TestMethod]
         public void CustomerListOK()
         {
@@ -43,15 +43,7 @@ namespace Test_Framework
             Assert.AreEqual(AllCustomers.CustomerList, TestList);
         }
        
-      /*  [TestMethod]
-        public void CountPropertyOK()
-        {
-            clsCustomerCollection AllCustomers = new clsCustomerCollection();
-            Int32 SomeCount = 2;
-            AllCustomers.Count = SomeCount;
-            Assert.AreEqual(AllCustomers.Count, SomeCount);
-        }
-      */
+      
         [TestMethod]
         public void ThisCustomerPropertyOK()
         {
@@ -95,14 +87,7 @@ namespace Test_Framework
             //Test to see that the two values are the same
             Assert.AreEqual(AllCustomers.Count, TestList.Count);
         }
-/*
-        [TestMethod]
-        public void TwoRecordsPresent()
-        {
-            clsCustomerCollection AllCustomers = new clsCustomerCollection();
-            Assert.AreEqual(AllCustomers.Count, 2);
-        }
-    */
+
         [TestMethod]
         public void AddMethodOK()
         {
@@ -243,9 +228,26 @@ namespace Test_Framework
             //test to see tha there are no records
             Assert.IsFalse(OK);
         }
-
+        //Test methods Not needed:
+        /*
+        [TestMethod]
+        public void TwoRecordsPresent()
+        {
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            Assert.AreEqual(AllCustomers.Count, 2);
+        }
+    */
+        /*  [TestMethod]
+        public void CountPropertyOK()
+        {
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            Int32 SomeCount = 2;
+            AllCustomers.Count = SomeCount;
+            Assert.AreEqual(AllCustomers.Count, SomeCount);
+        }
+      */
     }
 
 
-  
+
 }

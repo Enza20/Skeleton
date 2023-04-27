@@ -58,33 +58,7 @@ namespace ClassLibrary
             PopulateArray(DB);
             }
 
-    
-
- /*       //create the items of test data
-        clsCustomer TestItem = new clsCustomer();
-        //set its properties
-            TestItem.CustomerId = 10;
-            TestItem.CustomerFullName = "Joey Person";
-            TestItem.CustomerPhoneNumber = "0347382643";
-            TestItem.CustomerBillingAddress = "39 road";
-            TestItem.DateOfRegistration = DateTime.Now.Date;
-            TestItem.IsAllowed = true;
-
-            //Add the item to the test list
-            mCustomerList.Add(TestItem);
-
-            //set its properties
-            TestItem.CustomerId = 2;
-            TestItem.CustomerFullName = "Some One";
-            TestItem.CustomerPhoneNumber = "071826327827";
-            TestItem.CustomerBillingAddress = "1 DMU Close";
-            TestItem.DateOfRegistration = DateTime.Now.Date;
-            TestItem.IsAllowed = true;
-
-            //Add the item to the test list
-            mCustomerList.Add(TestItem);
-            }
- */
+   
         public int Add()
         {
             //adds a new record to the database on the values of mthiscustomer
@@ -175,8 +149,32 @@ namespace ClassLibrary
                 Index++;
 
             }
-        
-        
+            /*       //create the items of test data
+           clsCustomer TestItem = new clsCustomer();
+           //set its properties
+               TestItem.CustomerId = 10;
+               TestItem.CustomerFullName = "Joey Person";
+               TestItem.CustomerPhoneNumber = "0347382643";
+               TestItem.CustomerBillingAddress = "39 road";
+               TestItem.DateOfRegistration = DateTime.Now.Date;
+               TestItem.IsAllowed = true;
+
+               //Add the item to the test list
+               mCustomerList.Add(TestItem);
+
+               //set its properties
+               TestItem.CustomerId = 2;
+               TestItem.CustomerFullName = "Some One";
+               TestItem.CustomerPhoneNumber = "071826327827";
+               TestItem.CustomerBillingAddress = "1 DMU Close";
+               TestItem.DateOfRegistration = DateTime.Now.Date;
+               TestItem.IsAllowed = true;
+
+               //Add the item to the test list
+               mCustomerList.Add(TestItem);
+               }
+    */
+
         }
     }
 

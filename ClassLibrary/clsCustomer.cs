@@ -140,7 +140,7 @@ namespace ClassLibrary
             }
 
 
-          //  public string isAllowed(int CustoemrId, string CustomerFullName, string CustomerPhoneNumber, string CustomerBillingAddress )
+          //  public string isAllowed(int CustomerId, string CustomerFullName, string CustomerPhoneNumber, string CustomerBillingAddress )
           //  {
           //      return "";
          //   }
@@ -227,9 +227,10 @@ namespace ClassLibrary
             return Error;
         }
 
-        public static implicit operator List<object>(clsCustomer v)
+    /*    public static implicit operator List<object>(clsCustomer v)
         {
             throw new NotImplementedException();
         }
+    */
     }
 }
