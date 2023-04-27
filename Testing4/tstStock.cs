@@ -13,7 +13,7 @@ namespace Testing4
         int quantity = 1;
         int supplierid = 1;
         string expirydate = DateTime.Now.Date.ToString();
-        double price = 2.1;
+        decimal price = 2.1m;
 
 
         [TestMethod]
@@ -96,7 +96,7 @@ namespace Testing4
         {
             clsStock Stock = new clsStock();
 
-            double TestData = 1;
+            decimal TestData = 1;
 
             Stock.ProductPrice = TestData;
 
@@ -200,7 +200,7 @@ namespace Testing4
             Boolean ok = true;
             Int32 ProductID = 1;
             Found = Stock.Find(ProductID);
-            if (Stock.ProductPrice != 3.0)
+            if (Stock.ProductPrice != 3.0m)
             {
                 ok = false;
             }
@@ -582,7 +582,7 @@ namespace Testing4
         {
             clsStock Stock = new clsStock();
             String Error = "";
-            double ProductPrice = -10.0;
+            decimal ProductPrice = -10.0m;
             Error = Stock.Valid(description, quantity, supplierid, expirydate, ProductPrice);
             Assert.AreNotEqual(Error, "");
         }
@@ -592,7 +592,7 @@ namespace Testing4
         {
             clsStock Stock = new clsStock();
             String Error = "";
-            double ProductPrice = 0.00;
+            decimal ProductPrice = 0.00m;
             Error = Stock.Valid(description, quantity, supplierid, expirydate, ProductPrice);
             Assert.AreNotEqual(Error, "");
         }
@@ -602,7 +602,7 @@ namespace Testing4
         {
             clsStock Stock = new clsStock();
             String Error = "";
-            double ProductPrice = 0.01;
+            decimal ProductPrice = 0.01m;
             Error = Stock.Valid(description, quantity, supplierid, expirydate, ProductPrice);
             Assert.AreEqual(Error, "");
         }
@@ -612,7 +612,7 @@ namespace Testing4
         {
             clsStock Stock = new clsStock();
             String Error = "";
-            double ProductPrice = 0.02;
+            decimal ProductPrice = 0.02m;
             Error = Stock.Valid(description, quantity, supplierid, expirydate, ProductPrice);
             Assert.AreEqual(Error, "");
         }
@@ -622,7 +622,7 @@ namespace Testing4
         {
             clsStock Stock = new clsStock();
             String Error = "";
-            double ProductPrice = 5000.00;
+            decimal ProductPrice = 5000.00m;
             Error = Stock.Valid(description, quantity, supplierid, expirydate, ProductPrice);
             Assert.AreEqual(Error, "");
         }
@@ -632,7 +632,7 @@ namespace Testing4
         {
             clsStock Stock = new clsStock();
             String Error = "";
-            double ProductPrice = 9999.98;
+            decimal ProductPrice = 9999.98m;
             Error = Stock.Valid(description, quantity, supplierid, expirydate, ProductPrice);
             Assert.AreEqual(Error, "");
         }
@@ -642,7 +642,7 @@ namespace Testing4
         {
             clsStock Stock = new clsStock();
             String Error = "";
-            double ProductPrice = 9999.99;
+            decimal ProductPrice = 9999.99m;
             Error = Stock.Valid(description, quantity, supplierid, expirydate, ProductPrice);
             Assert.AreEqual(Error, "");
         }
@@ -652,7 +652,7 @@ namespace Testing4
         {
             clsStock Stock = new clsStock();
             String Error = "";
-            double ProductPrice = 10000.00;
+            decimal ProductPrice = 10000.00m;
             Error = Stock.Valid(description, quantity, supplierid, expirydate, ProductPrice);
             Assert.AreNotEqual(Error, "");
         }
@@ -662,7 +662,7 @@ namespace Testing4
         {
             clsStock Stock = new clsStock();
             String Error = "";
-            double ProductPrice = 1000000.00;
+            decimal ProductPrice = 1000000.00m;
             Error = Stock.Valid(description, quantity, supplierid, expirydate, ProductPrice);
             Assert.AreNotEqual(Error, "");
         }

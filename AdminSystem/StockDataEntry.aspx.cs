@@ -22,7 +22,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Stock.Quantity = int.Parse(txtQuantity.Text);
         Stock.ExpiryDate = DateTime.Parse(txtExpiryDate.Text);
         Stock.SupplierID = int.Parse(txtSupplierID.Text);
-        Stock.ProductPrice = double.Parse(txtProductPrice.Text);
+        Stock.ProductPrice = decimal.Parse(txtProductPrice.Text);
         Stock.ProductID = int.Parse(txtStockID.Text);
 
         Session["Stock"] = Stock;
