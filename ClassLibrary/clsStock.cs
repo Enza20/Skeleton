@@ -73,8 +73,8 @@ namespace ClassLibrary
             }
         }
 
-        private double mProductPrice;
-        public double ProductPrice
+        private decimal mProductPrice;
+        public decimal ProductPrice
         {
             get
             {
@@ -111,7 +111,7 @@ namespace ClassLibrary
                 mQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["Quantity"]);
                 mSupplierID = Convert.ToInt32(DB.DataTable.Rows[0]["SupplierID"]);
                 mExpiryDate = Convert.ToDateTime(DB.DataTable.Rows[0]["ExpiryDate"]);
-                mProductPrice = Convert.ToDouble(DB.DataTable.Rows[0]["ProductPrice"]);
+                mProductPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["ProductPrice"]);
                 mCanPurchase = Convert.ToBoolean(DB.DataTable.Rows[0]["CanPurchase"]);
                 return true;
             }
@@ -122,7 +122,7 @@ namespace ClassLibrary
 
         }
 
-        public string Valid(string description, int quantity, int supplierid, string expirydate, double price)
+        public string Valid(string description, int quantity, int supplierid, string expirydate, decimal price)
         {
             String Error = "";
             DateTime DateTemp;
@@ -188,11 +188,11 @@ namespace ClassLibrary
 
             try
             {
-                if (price < 0.01)
+                if (price < 0.01m)
                 {
                     Error = Error + "Price can not be 0 or less. ";
                 }
-                if (price > 9999.99)
+                if (price > 9999.99m)
                 {
                     Error = Error + "Maximum price is 9999.99";
                 }
