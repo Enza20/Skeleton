@@ -1,17 +1,30 @@
 ﻿using System;
+using System.Globalization;
+
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+
 
 namespace ClassLibrary
 {
     public class clsStaff
     {
-        //private data member for the staff id
+        //private data member for staff id
         private Int32 mStaffId;
-
+        //private data member for employment data
         private DateTime mEmploymentDate;
+        //private data for full name
         private string mFullName;
+        //proivate data for role
         private string mRole;
+        //private data for active
         private Boolean mActive;
+        //private data for salary
         private decimal mSalary;
+
+        
 
         //active public property
         public bool Active
@@ -102,7 +115,9 @@ namespace ClassLibrary
                 mRole = value;
             }
         }
+
        
+
 
         //public bool Find(int staffId)
         //{
@@ -134,8 +149,12 @@ namespace ClassLibrary
                 mFullName= Convert.ToString(DB.DataTable.Rows[0]["FullName"]);
                 mRole= Convert.ToString(DB.DataTable.Rows[0]["Role"]);
                 mActive= Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
-               mEmploymentDate= Convert.ToDateTime(DB.DataTable.Rows[0]["EmploymentDate"]);
-               mSalary= Convert.ToDecimal(DB.DataTable.Rows[0]["Salary"]);
+                mEmploymentDate= Convert.ToDateTime(DB.DataTable.Rows[0]["EmploymentDate"]);
+                mSalary= Convert.ToDecimal(DB.DataTable.Rows[0]["Salary"]);
+
+                
+
+
 
                 //return that everything worked OK
                 return true;
@@ -154,29 +173,30 @@ namespace ClassLibrary
 
 
 
-        public string Valid(string fullname, string role, string employmentdate, string salary)
+
+
+public string Valid(string fullname, string role, string employmentdate, string salary)
+    {
+        //create a string variable to store the error
+        string Error = "";
+        //create a temporary variable to store date values
+        DateTime DateTemp;
+
+        //if the fullname is blank
+        if (fullname.Length == 0)
         {
-            //create a string variable to store the error
-            string Error = "";
-            //create a temporary variable to store date values
-            DateTime DateTemp;
-            //if the fullname is blank
-            if (fullname.Length == 0)
-            {
-                //record the error
-                Error = Error + "the full name may not be blank: ";
-            }
-            //if the full name is greater than 40 characters
-            if (fullname.Length > 40)
-            {
-                //record the error
-                Error = Error + " The full name must be less than 40 characters : ";
-            }
-
-
+            //record the error
+            Error = Error + "The full name may not be blank. ";
+        }
+        //if the full name is greater than 40 characters
+        if (fullname.Length > 40)
+        {
+            //record the error
+            Error = Error + "The full name must be less than 40 characters. ";
+        }
             try
-            { 
-                //copy the employmentdate value to the DateTemp variable
+            {
+                //copy the dateAdded value to the DateTemp variable
                 DateTemp = Convert.ToDateTime(employmentdate);
                 if (DateTemp < DateTime.Now.Date)
                 {
@@ -186,44 +206,63 @@ namespace ClassLibrary
                 //check to see if the date is greater than today's date
                 if (DateTemp > DateTime.Now.Date)
                 {
+                    //record the error
                     Error = Error + "The date cannot be in the future : ";
                 }
-
             }
             catch
             {
-
-                //return any error message
-                Error = Error + "The date was not valid";
-            }
-
-            //if the role is blank
-            if (role.Length == 0)
-            {
                 //record the error
-                Error = Error + "The role field may not be blank: ";
+                Error = Error + "The date was not a valid date : ";
             }
-            //if role is too long
-            if(role.Length > 30)
-            {
-                //record the error
-                Error = Error + "The role must be less than 30 characters: ";
-            }
+       
+        
+            
+        
+       
 
-
-
-
-
-
-
-
-            return Error;
-
-
+        //if the role is blank
+        if (role.Length == 0)
+        {
+            //record the error
+            Error = Error + "The role field may not be blank. ";
+        }
+        //if role is too long
+        if (role.Length > 30)
+        {
+            //record the error
+            Error = Error + "The role must be less than 30 characters. ";
         }
 
+        //check is the salary is blank
+        if (salary.Length == 0)
+        {
+            //record the error
+            Error = Error + "The salary field may not be blank. ";
+        }
+        else
+        {
+            //check if the salary input is a valid decimal
+            decimal salaryDecimal;
+            if (!Decimal.TryParse(salary, out salaryDecimal))
+            {
+                //record the error
+                Error = Error + "The salary must be a valid decimal value. ";
+            }
+            if (salaryDecimal < 100.00m || salaryDecimal > 99999.99m)
+            {
+                //record the error
+                Error = Error + "The salary must be between 100.00 and 99999.99. ";
+            }
+        }
 
-
-
+        return Error;
     }
+
+
+
+
+
+
+}
 }
